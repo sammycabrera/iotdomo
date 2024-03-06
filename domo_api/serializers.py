@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 class LocationSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
     name_location = serializers.CharField(max_length=255)
     user_id = serializers.IntegerField()
 

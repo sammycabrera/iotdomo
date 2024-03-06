@@ -52,20 +52,6 @@ class Locations_method(APIView):
         content["locations"]=locations_list
         return Response(content, status=status.HTTP_200_OK)
 
-
-    def get2(self, request):
-        print ("Hello, Domo IoT")
-        content={
-            "message":"Hello, Domo IoT"}
-        return Response("Hello, Domo IoT", status=status.HTTP_200_OK)
-    
-
-    
-    #def getById(self, codigo):
-    #    location=Locations.objects.get(id=codigo)
-    #    content={
-    #        "name_location":location.name_location}
-    #    return Response(content, status=status.HTTP_200_OK)
     
     def put(self, request, codigo):
         location=Locations.objects.get(id=codigo)
@@ -113,7 +99,14 @@ class Devices_method(APIView):
 
 
 
-
+class Devices_Id_method(APIView):
+    def get(self, request):
+        devices=Devices.objects.all()
+        content ={}
+        devices_list= DeviceSerializer(devices,many=True).data
+        content["devices"]=devices_list
+        return Response(content, status=status.HTTP_200_OK)
+    
 
 class Dots_method(APIView):
     def post(self, request):
@@ -138,3 +131,10 @@ class Dots_method(APIView):
         dot.delete()        
         return Response("Delete dot iot",status=status.HTTP_200_OK)
     
+class Dots_Id_method(APIView):
+    def get(self, request):
+        dots=Dots.objects.all()
+        content ={}
+        dots_list= DotSerializer(dots,many=True).data
+        content["dots"]=dots_list
+        return Response(content, status=status.HTTP_200_OK)
