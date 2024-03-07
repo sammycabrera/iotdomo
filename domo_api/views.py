@@ -7,6 +7,7 @@ from domo_api.serializers import *
 # Create your views here.
 # https://blog.logrocket.com/django-rest-framework-create-api/
 
+
 class Locations_Id_method(APIView):
     def get(self, request):
         locations=Locations.objects.all()
