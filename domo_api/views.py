@@ -119,7 +119,7 @@ class Dots_method(APIView):
 
 
     def get(self, request, codigo):
-        dots=Dots.objects.filter(id=codigo)
+        dots=Dots.objects.filter(device_id=codigo)
         content ={}
         dots_list= DotSerializer(dots,many=True).data
         content["dots"]=dots_list
